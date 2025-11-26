@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import Stats from './components/Stats';
 import Features from './components/Features';
 import Industries from './components/Industries';
+import MobileApp from './components/MobileApp';
 import HowItWorks from './components/HowItWorks';
 import Tutorials from './components/Tutorials';
 import Testimonials from './components/Testimonials';
@@ -21,6 +22,7 @@ function App() {
         <Stats />
         <Features />
         <Industries />
+        <MobileApp />
         <HowItWorks />
         <Tutorials />
         <Pricing />
