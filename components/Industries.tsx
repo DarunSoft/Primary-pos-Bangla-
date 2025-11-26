@@ -1,22 +1,39 @@
 import React, { useState } from 'react';
-import { Utensils, ShoppingCart, Shirt, Pill, Store, Check, ArrowRight, ChevronRight } from 'lucide-react';
+import { Pill, Monitor, ShoppingCart, Shirt, Store, Check, ArrowRight, ChevronRight } from 'lucide-react';
 
 const industries = [
   {
-    id: 'restaurant',
-    name: 'রেস্টুরেন্ট',
-    icon: Utensils,
-    color: 'from-orange-500 to-red-500',
-    bg: 'bg-orange-50',
-    text: 'text-orange-600',
-    border: 'border-orange-200',
-    title: 'রেস্টুরেন্ট ও ক্যাফে',
-    description: 'অর্ডার ম্যানেজমেন্ট থেকে কিচেন ডিসপ্লে—রেস্টুরেন্টের সব অপারেশন এখন হাতের মুঠোয়। টেবিল বুকিং, বিলিং এবং ইনভেন্টরি হবে চোখের পলকে।',
+    id: 'pharmacy',
+    name: 'ফার্মেসী',
+    icon: Pill,
+    color: 'from-teal-500 to-cyan-600',
+    bg: 'bg-teal-50',
+    text: 'text-teal-600',
+    border: 'border-teal-200',
+    title: 'ফার্মেসী ম্যানেজমেন্ট',
+    description: 'ওষুধের ব্যবসা এখন হবে আরও নিরাপদ ও স্মার্ট। জেনেরিক নাম ও মেয়াদ ট্র্যাকিং সহ পূর্ণাঙ্গ ফার্মেসী সলিউশন।',
     features: [
-      'ফ্লোর ও টেবিল প্ল্যান ম্যানেজমেন্ট',
-      'KOT (কিচেন অর্ডার টোকেন) সিস্টেম',
-      'ইনগ্রেডিয়েন্ট ও রেসিপি ট্র্যাকিং',
-      'ওয়েটার অ্যাপ ও ডিজিটাল মেনু'
+      'জেনেরিক নাম দিয়ে ওষুধ সার্চ',
+      'মেয়াদোত্তীর্ণ ওষুধের অটো অ্যালার্ট',
+      'ব্যাচ ওয়াইজ স্টক ম্যানেজমেন্ট',
+      'পেশেন্ট ও প্রেসক্রিপশন রেকর্ড'
+    ]
+  },
+  {
+    id: 'electronics',
+    name: 'ইলেকট্রনিক্স',
+    icon: Monitor,
+    color: 'from-violet-500 to-purple-600',
+    bg: 'bg-violet-50',
+    text: 'text-violet-600',
+    border: 'border-violet-200',
+    title: 'ইলেকট্রনিক্স ও মোবাইল শপ',
+    description: 'আইএমইআই (IMEI) ও সিরিয়াল নাম্বার ট্র্যাকিং সহ ওয়ারেন্টি ম্যানেজমেন্ট এখন পানির মতো সহজ। সার্ভিসিং ও রিপেয়ারিং এর হিসাব রাখুন এক অ্যাপে।',
+    features: [
+      'সিরিয়াল/IMEI নাম্বার স্ক্যানিং',
+      'ওয়ারেন্টি ও গ্যারান্টি ম্যানেজমেন্ট',
+      'সার্ভিসিং ও রিপেয়ার ট্র্যাকিং',
+      'কিস্তি বা ইএমআই (EMI) কালেকশন'
     ]
   },
   {
@@ -68,23 +85,6 @@ const industries = [
       'কাস্টমার ও সাপ্লায়ার বাকি খাতা',
       'সহজ ক্যাশ কাউন্টার ম্যানেজমেন্ট',
       'মোবাইল অ্যাপ দিয়ে মনিটরিং'
-    ]
-  },
-  {
-    id: 'pharmacy',
-    name: 'ফার্মেসী',
-    icon: Pill,
-    color: 'from-teal-500 to-cyan-600',
-    bg: 'bg-teal-50',
-    text: 'text-teal-600',
-    border: 'border-teal-200',
-    title: 'ফার্মেসী ম্যানেজমেন্ট',
-    description: 'ওষুধের ব্যবসা এখন হবে আরও নিরাপদ ও স্মার্ট। জেনেরিক নাম ও মেয়াদ ট্র্যাকিং সহ পূর্ণাঙ্গ ফার্মেসী সলিউশন।',
-    features: [
-      'জেনেরিক নাম দিয়ে ওষুধ সার্চ',
-      'মেয়াদোত্তীর্ণ ওষুধের অটো অ্যালার্ট',
-      'ব্যাচ ওয়াইজ স্টক ম্যানেজমেন্ট',
-      'পেশেন্ট ও প্রেসক্রিপশন রেকর্ড'
     ]
   }
 ];
