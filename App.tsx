@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import Stats from './components/Stats';
 import Features from './components/Features';
 import HowItWorks from './components/HowItWorks';
+import Tutorials from './components/Tutorials';
 import Testimonials from './components/Testimonials';
 import Pricing from './components/Pricing';
 import FAQ from './components/FAQ';
@@ -19,6 +20,7 @@ function App() {
         <Stats />
         <Features />
         <HowItWorks />
+        <Tutorials />
         <Pricing />
         <Testimonials />
         <FAQ />
