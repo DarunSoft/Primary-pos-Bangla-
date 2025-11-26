@@ -32,7 +32,7 @@ const industries = [
     activeBorder: 'border-l-violet-500',
     shadow: 'shadow-violet-100',
     title: 'ইলেকট্রনিক্স ও মোবাইল শপ',
-    description: 'আইএমইআই (IMEI) ও সিরিয়াল নাম্বার ট্র্যাকিং সহ ওয়ারেন্টি ম্যানেজমেন্ট এখন পানির মতো সহজ। সার্ভিসিং ও রিপেয়ারিং এর হিসাব রাখুন এক অ্যাপে।',
+    description: 'আইএমইআই (IMEI) ও ওয়ারেন্টি ম্যানেজমেন্ট এখন পানির মতো সহজ। মোবাইল অ্যাপের মাধ্যমে যেকোনো জায়গা থেকে শোরুম মনিটর করুন এবং রিয়েল-টাইম সেলস রিপোর্ট দেখুন।',
     features: [
       'সিরিয়াল/IMEI নাম্বার স্ক্যানিং',
       'ওয়ারেন্টি ও গ্যারান্টি ম্যানেজমেন্ট',
@@ -89,7 +89,7 @@ const industries = [
     activeBorder: 'border-l-blue-500',
     shadow: 'shadow-blue-100',
     title: 'জেনারেল রিটেইল স্টোর',
-    description: 'ছোট বা মাঝারি যেকোনো দোকানের প্রতিদিনের বেচা-কেনা ও লাভের হিসাব রাখার সবচেয়ে সহজ সমাধান।',
+    description: 'ছোট বা মাঝারি যেকোনো দোকানের প্রতিদিনের হিসাব রাখার সহজ সমাধান। মোবাইল অ্যাপ ব্যবহার করে দোকানে না থেকেও স্টক চেক ও বেচা-কেনা দেখুন।',
     features: [
       'এক ক্লিকে দৈনিক লাভ-ক্ষতির রিপোর্ট',
       'মোবাইল অ্যাপ দিয়ে ব্যবসা নিয়ন্ত্রণ',
@@ -146,7 +146,7 @@ const Industries: React.FC = () => {
             {industries.map((item, index) => (
               <button
                 key={item.id}
-                ref={el => tabRefs.current[index] = el}
+                ref={(el) => { tabRefs.current[index] = el; }}
                 onClick={() => handleTabClick(index)}
                 className={`snap-center flex-shrink-0 flex items-center gap-3 p-3 md:p-4 rounded-xl transition-all duration-300 ease-out min-w-[200px] lg:min-w-0 text-left border group relative overflow-hidden ${
                   activeTab === index
