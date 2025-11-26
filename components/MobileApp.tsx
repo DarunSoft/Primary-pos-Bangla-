@@ -1,5 +1,5 @@
 import React from 'react';
-import { Smartphone, Bell, BarChart2, CheckCircle, ArrowRight } from 'lucide-react';
+import { Smartphone, Bell, BarChart2, CheckCircle, ArrowRight, TrendingUp } from 'lucide-react';
 
 const MobileApp: React.FC = () => {
   return (
@@ -38,8 +38,8 @@ const MobileApp: React.FC = () => {
               />
               <FeatureRow 
                 icon={BarChart2} 
-                title="লাইভ ড্যাশবোর্ড" 
-                desc="আজকের মোট বিক্রি, লাভ এবং খরচের হিসাব এক নজরে দেখুন।" 
+                title="স্মার্ট অ্যানালিটিক্স" 
+                desc="মাসিক বিক্রয় ট্রেন্ড এবং সেরা বিক্রিত পণ্যের তালিকা এক নজরে দেখুন।" 
               />
               <FeatureRow 
                 icon={CheckCircle} 
@@ -61,7 +61,7 @@ const MobileApp: React.FC = () => {
 
           {/* Phone Mockup */}
           <div className="lg:w-1/2 relative">
-             <div className="relative mx-auto border-gray-800 bg-gray-800 border-[14px] rounded-[2.5rem] h-[600px] w-[300px] shadow-2xl flex flex-col overflow-hidden">
+             <div className="relative mx-auto border-gray-800 bg-gray-800 border-[14px] rounded-[2.5rem] h-[640px] w-[320px] shadow-2xl flex flex-col overflow-hidden">
                 <div className="h-[32px] w-[3px] bg-gray-800 absolute -left-[17px] top-[72px] rounded-l-lg"></div>
                 <div className="h-[46px] w-[3px] bg-gray-800 absolute -left-[17px] top-[124px] rounded-l-lg"></div>
                 <div className="h-[46px] w-[3px] bg-gray-800 absolute -left-[17px] top-[178px] rounded-l-lg"></div>
@@ -80,14 +80,15 @@ const MobileApp: React.FC = () => {
                    </div>
 
                    {/* App Header */}
-                   <div className="bg-primary-600 px-5 pt-2 pb-6 rounded-b-[2rem] shadow-lg z-10">
+                   <div className="bg-primary-600 px-5 pt-2 pb-6 rounded-b-[2rem] shadow-lg z-10 flex-shrink-0">
                       <div className="flex justify-between items-center mb-6">
                         <div className="text-white">
                           <div className="text-xs opacity-80">স্বাগতম,</div>
                           <div className="font-bold text-lg">মাহাবুব কম্পিউটার</div>
                         </div>
-                        <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                        <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm relative">
                           <Bell className="w-5 h-5 text-white" />
+                          <div className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border border-white"></div>
                         </div>
                       </div>
                       
@@ -102,7 +103,8 @@ const MobileApp: React.FC = () => {
                    </div>
 
                    {/* Body */}
-                   <div className="p-5 overflow-y-auto hide-scrollbar space-y-4">
+                   <div className="flex-1 overflow-y-auto hide-scrollbar p-5 space-y-4 pb-20">
+                      {/* Quick Stats Grid */}
                       <div className="grid grid-cols-2 gap-3">
                          <div className="bg-white p-3 rounded-xl shadow-sm border border-gray-100">
                             <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600 mb-2">
@@ -120,20 +122,66 @@ const MobileApp: React.FC = () => {
                          </div>
                       </div>
 
+                      {/* Monthly Sales Trend Chart */}
+                      <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+                        <div className="flex justify-between items-center mb-4">
+                           <div className="flex items-center gap-1.5">
+                             <TrendingUp className="w-3 h-3 text-primary-600" />
+                             <h4 className="font-bold text-gray-800 text-xs">মাসিক বিক্রয় ট্রেন্ড</h4>
+                           </div>
+                           <span className="text-[10px] text-green-600 bg-green-50 px-1.5 py-0.5 rounded-full font-medium">+১৫%</span>
+                        </div>
+                        <div className="flex items-end justify-between gap-2 h-16 px-1">
+                           {[40, 65, 45, 80, 55, 90, 70].map((h, i) => (
+                              <div key={i} className="flex-1 flex flex-col justify-end group cursor-pointer">
+                                 <div 
+                                  style={{height: `${h}%`}} 
+                                  className={`w-full rounded-t-sm transition-all duration-300 ${i === 5 ? 'bg-primary-500' : 'bg-primary-100 group-hover:bg-primary-200'}`}
+                                 ></div>
+                              </div>
+                           ))}
+                        </div>
+                        <div className="flex justify-between text-[8px] text-gray-400 mt-1 uppercase px-1">
+                          <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+                        </div>
+                      </div>
+
+                      {/* Top Selling Products */}
+                      <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+                        <h4 className="font-bold text-gray-800 text-xs mb-3">সেরা বিক্রিত পণ্য</h4>
+                        <div className="space-y-3">
+                          {[
+                            { name: 'Wireless Mouse', count: '85%', color: 'bg-purple-500' },
+                            { name: 'Gaming Keyboard', count: '62%', color: 'bg-blue-500' },
+                            { name: 'USB Hub 3.0', count: '45%', color: 'bg-orange-500' }
+                          ].map((product, i) => (
+                            <div key={i}>
+                              <div className="flex justify-between text-[10px] mb-1">
+                                <span className="font-medium text-gray-700">{product.name}</span>
+                              </div>
+                              <div className="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
+                                <div style={{width: product.count}} className={`h-full ${product.color} rounded-full`}></div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Recent Transactions List */}
                       <div>
                         <h4 className="font-bold text-gray-800 text-sm mb-3">সাম্প্রতিক বিক্রয়</h4>
                         <div className="space-y-3">
-                          {[1, 2, 3].map((i) => (
+                          {[1, 2].map((i) => (
                             <div key={i} className="bg-white p-3 rounded-xl border border-gray-100 flex justify-between items-center">
                               <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 bg-gray-100 rounded-lg"></div>
+                                <div className="w-8 h-8 bg-gray-50 rounded-lg flex items-center justify-center text-xs font-bold text-gray-400">#{i}</div>
                                 <div>
-                                  <div className="font-bold text-sm text-gray-900">ইনভয়েস #102{i}</div>
-                                  <div className="text-xs text-gray-500">ওয়াক-ইন কাস্টমার</div>
+                                  <div className="font-bold text-xs text-gray-900">ইনভয়েস #102{i}</div>
+                                  <div className="text-[10px] text-gray-500">ওয়াক-ইন কাস্টমার</div>
                                 </div>
                               </div>
                               <div className="text-right">
-                                <div className="font-bold text-sm text-primary-600">৳১,২০০</div>
+                                <div className="font-bold text-xs text-primary-600">৳১,২০০</div>
                                 <div className="text-[10px] text-gray-400">১০:৩০ AM</div>
                               </div>
                             </div>
@@ -143,24 +191,24 @@ const MobileApp: React.FC = () => {
                    </div>
 
                    {/* Bottom Nav */}
-                   <div className="absolute bottom-0 w-full bg-white border-t border-gray-100 h-16 flex justify-around items-center px-2">
+                   <div className="absolute bottom-0 w-full bg-white border-t border-gray-100 h-16 flex justify-around items-center px-2 z-20">
                       <div className="flex flex-col items-center gap-1 text-primary-600">
                         <div className="w-1 h-1 bg-primary-600 rounded-full mb-1"></div>
                         <div className="w-6 h-6 bg-primary-50 rounded-lg"></div>
                       </div>
-                      <div className="w-6 h-6 bg-gray-100 rounded-lg"></div>
-                      <div className="w-12 h-12 bg-primary-600 rounded-full -mt-6 border-4 border-gray-50 flex items-center justify-center text-white shadow-lg shadow-primary-500/30">+</div>
-                      <div className="w-6 h-6 bg-gray-100 rounded-lg"></div>
-                      <div className="w-6 h-6 bg-gray-100 rounded-lg"></div>
+                      <div className="w-6 h-6 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors cursor-pointer"></div>
+                      <div className="w-12 h-12 bg-primary-600 rounded-full -mt-6 border-4 border-gray-50 flex items-center justify-center text-white shadow-lg shadow-primary-500/30 transform active:scale-95 transition-transform cursor-pointer">+</div>
+                      <div className="w-6 h-6 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors cursor-pointer"></div>
+                      <div className="w-6 h-6 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors cursor-pointer"></div>
                    </div>
                 </div>
              </div>
 
-             {/* Floating Elements */}
-             <div className="absolute top-20 -right-8 bg-white p-3 rounded-xl shadow-xl animate-bounce duration-[3000ms]">
+             {/* Floating Notification */}
+             <div className="absolute top-24 -right-8 bg-white p-3 rounded-xl shadow-xl animate-bounce duration-[3000ms] border border-gray-100">
                 <div className="flex items-center gap-2">
-                   <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                   <span className="text-xs font-bold text-gray-800">New Order!</span>
+                   <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                   <span className="text-xs font-bold text-gray-800">New Sale: ৳4,500</span>
                 </div>
              </div>
           </div>
@@ -173,8 +221,8 @@ const MobileApp: React.FC = () => {
 
 const FeatureRow: React.FC<{icon: any, title: string, desc: string}> = ({ icon: Icon, title, desc }) => (
   <div className="flex gap-4">
-    <div className="flex-shrink-0 w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center border border-gray-700">
-      <Icon className="w-6 h-6 text-primary-400" />
+    <div className="flex-shrink-0 w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center border border-gray-700 group hover:border-primary-500 transition-colors">
+      <Icon className="w-6 h-6 text-primary-400 group-hover:text-primary-300 transition-colors" />
     </div>
     <div>
       <h4 className="text-lg font-bold text-white mb-1">{title}</h4>
